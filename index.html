@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10243c">
+  <title>Fahrlehrer-Berichtsheft</title>
+  <meta name="description" content="Unterrichtseinheiten im Lehrpraktikum nach Anlage 3 FahrlAusbV dokumentieren.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="brand-icon" aria-hidden="true">▤</span><div><small>LEHRPRAKTIKUM</small><h1>Fahrlehrer-Berichtsheft</h1></div></div>
+      <button class="ghost-button" id="printButton" type="button">Drucken</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="metrics" aria-label="Übersicht">
+      <article class="metric"><span>Gesamt dokumentiert</span><strong id="totalValue">0 / 330 UE</strong><small id="totalPercent">0 % des Musterplans</small></article>
+      <article class="metric"><span>Aktuelle Woche</span><strong id="weekValue">0 UE</strong><small id="weekState">20–32 UE · unter dem Mindestwert</small></article>
+      <article class="metric"><span>Erfüllte Bereiche</span><strong id="completeValue">0 / 10</strong><small>Mindestumfang nach Anlage 3</small></article>
+    </section>
+
+    <div class="layout">
+      <form class="panel entry-form" id="entryForm">
+        <div class="section-title"><span class="plus">+</span><div><h2>Eintrag erfassen</h2><p>1 UE entspricht 45 Minuten</p></div></div>
+        <label for="entryDate">Datum</label><input id="entryDate" type="date" required>
+        <label for="category">Bereich nach Anlage 3</label><select id="category" required></select>
+        <label for="units">Unterrichtseinheiten</label><input id="units" type="number" min="1" max="32" step="1" value="1" required><small class="minute-hint" id="minuteHint">45 Minuten</small>
+        <label for="note">Tätigkeit / Thema</label><textarea id="note" rows="4" placeholder="z. B. Hospitation: Grundstoff Lektion 3"></textarea>
+        <p class="error" id="error" role="alert" hidden></p>
+        <button class="primary-button" type="submit">Eintrag speichern</button>
+      </form>
+
+      <div class="content">
+        <section class="panel progress-panel">
+          <p class="eyebrow">SOLL–IST-ÜBERSICHT</p><h2>Fortschritt nach Anlage 3</h2>
+          <div class="progress-grid" id="progressGrid"></div>
+        </section>
+        <section class="panel history-panel">
+          <div class="history-head"><div><p class="eyebrow">CHRONIK</p><h2>Einträge</h2></div><span id="entryCount">0 Einträge</span></div>
+          <div id="history"></div>
+        </section>
+        <p class="legal-note">⚠ Die Übersicht unterstützt deine Dokumentation. Maßgeblich bleiben der genehmigte Praktikumsplan und die Vorgaben deiner Ausbildungsfahrschule beziehungsweise Behörde.</p>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
